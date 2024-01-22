@@ -56,8 +56,8 @@ const showTime = () => {
     case 23:
       hours = `11`;
       break;
-    case 24:
-      hours = `00`;
+    case "00":
+      hours = `12`;
       break;
   }
   time.innerHTML = `${hours} : ${minutes} : ${seconds}`;
