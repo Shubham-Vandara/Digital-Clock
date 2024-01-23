@@ -3,7 +3,7 @@ const timeFormat = document.querySelector("#timeformat");
 
 // The DOMContentLoaded event fires when the HTML document has been completely parsed
 document.addEventListener("DOMContentLoaded", () => {
-  // two parameter pass first handeler second one is second
+  // two parameter pass first handler second one is second
   setInterval(showTime, 1000);
 });
 
@@ -11,54 +11,19 @@ const showTime = () => {
   let date = new Date();
   console.log(date);
 
-  let hours = date.getHours();
-  let minutes = date.getMinutes();
-  let seconds = date.getSeconds();
+  let h = date.getHours();
+  let m = date.getMinutes();
+  let s = date.getSeconds();
 
   // * Ternary Operator
-  hours = hours < 10 ? `0${hours}` : hours;
-  minutes = minutes < 10 ? `0${minutes}` : minutes;
-  seconds = seconds < 10 ? `0${seconds}` : seconds;
+  h = h < 10 ? `0${h}` : h;
+  m = m < 10 ? `0${m}` : m;
+  s = s < 10 ? `0${s}` : s;
 
-  timeFormat.innerHTML = hours >= 12 ? "PM" : "AM";
-  //   for time format 13 into 01
-  switch (hours) {
-    case 13:
-      hours = `01`;
-      break;
-    case 14:
-      hours = `02`;
-      break;
-    case 15:
-      hours = `03`;
-      break;
-    case 16:
-      hours = `04`;
-      break;
-    case 17:
-      hours = `05`;
-      break;
-    case 18:
-      hours = `06`;
-      break;
-    case 19:
-      hours = `07`;
-      break;
-    case 20:
-      hours = `08`;
-      break;
-    case 21:
-      hours = `09`;
-      break;
-    case 22:
-      hours = `10`;
-      break;
-    case 23:
-      hours = `11`;
-      break;
-    case "00":
-      hours = `12`;
-      break;
+  timeFormat.innerHTML = "AM";
+  if (h > 12) {
+    h = `0${h - 12}`;
+    timeFormat.innerHTML = "PM";
   }
-  time.innerHTML = `${hours} : ${minutes} : ${seconds}`;
+  time.innerHTML = `${h} : ${m} : ${s}`;
 };
