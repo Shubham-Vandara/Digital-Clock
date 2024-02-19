@@ -21,7 +21,9 @@ const showTime = () => {
   s = s < 10 ? `0${s}` : s;
 
   timeFormat.innerHTML = "AM";
-  if (h >= 12) {
+  if (h == 00) {
+    h = 12;
+  } else if (h >= 12) {
     timeFormat.innerHTML = "PM";
     if (h >= 22 && h <= 24) {
       h = h - 12;
